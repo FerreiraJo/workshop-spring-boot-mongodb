@@ -1,12 +1,15 @@
 package com.jonathanferreira.workshopmongo.services;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jonathanferreira.workshopmongo.domain.User;
 import com.jonathanferreira.workshopmongo.repository.UserRepository;
+import com.jonathanferreira.workshopmongo.services.exception.ObjectNotFoundException;
 
 @Service
 public class UserService {
@@ -16,5 +19,16 @@ public class UserService {
 		
 		public List<User> findAll(){
 			return repo.findAll(); /* Retorna todos os objetos do banco de dados */
+		}
+		
+		public User findById(String id) {
+			try {
+				Optional<User> user = repo.findById(id);
+				return user.get();
+			}
+			catch(NoSuchElementException e){
+				throw new ObjectNotFoundException("Objeto nao encontrado");
+			}
+			
 		}
 }
