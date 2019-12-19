@@ -47,6 +47,11 @@ public class UserResource {
 		/* coleta o endereco do novo objeto criado */
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
-		
+	}
+	
+	@RequestMapping(value="/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<UserDTO> delete(@PathVariable String id){ /* o valor recebido pela funcao eh o passado na url */
+		service.delete(id);
+		return ResponseEntity.noContent().build();
 	}
 }

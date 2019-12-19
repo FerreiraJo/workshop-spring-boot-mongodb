@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.jonathanferreira.workshopmongo.services.exception.ObjectNotFoundException;
 
-@ControllerAdvice /*indica que a classe eh responsavel por tratar erros da camada de resorces */
+@ControllerAdvice /*indica que a classe eh responsavel por tratar erros da camada resources */
 public class ResourceExceptionHandler {
 	
 	@ExceptionHandler(ObjectNotFoundException.class)
