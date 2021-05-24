@@ -15,7 +15,7 @@ import com.jonathanferreira.workshopmongo.services.exception.ObjectNotFoundExcep
 @Service
 public class PostService {
 		
-		@Autowired /*Estancia automaticamente o serviço */
+		@Autowired /*istancia automaticamente o serviço */
 		private PostRepository repo; /* injeção de dependencia, o service acessa o repository */
 		
 		public Post findById(String id) {
